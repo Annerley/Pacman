@@ -16,13 +16,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    edge.cpp \
+    graph.cpp \
+    grid.cpp \
     main.cpp \
     game.cpp \
-    player.cpp
+    map.cpp \
+    node.cpp \
+    player.cpp \
+    tree.cpp
 
 HEADERS += \
+    edge.h \
     game.h \
-    player.h
+    graph.h \
+    grid.h \
+    map.h \
+    node.h \
+    player.h \
+    tree.h
 
 FORMS += \
     game.ui

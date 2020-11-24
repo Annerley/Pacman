@@ -10,7 +10,7 @@ class QKeyEvent;
 class QGraphicsItem;
 class Game;
 
-class Player: public QObject, public QGraphicsRectItem {
+class Player: public QObject, public QGraphicsEllipseItem {
     Q_OBJECT
 public:
     // constructor
@@ -36,6 +36,7 @@ private:
     void moveDown();
     void moveLeft();
     void moveRight();
+    bool frontBlocked();
 
 };
 

@@ -4,12 +4,14 @@
 #include <QKeyEvent>
 #include <QDebug> // TODO remove
 #include <QBrush>
+#include<QPixmap>
+#include <QGraphicsEllipseItem>
 #include "game.h"
 
 Player::Player(Game *game, int stepSize, QGraphicsItem *parent):
     movementDirection_(Direction::NONE),
     stepSize_(stepSize),
-    QGraphicsRectItem(parent),
+    QGraphicsEllipseItem(parent),
     game_(game)
 {
 
@@ -19,9 +21,10 @@ Player::Player(Game *game, int stepSize, QGraphicsItem *parent):
     moveTimer->start(300);
 
     // set the rect
+
     setRect(0,0,stepSize,stepSize);
     QBrush brush;
-    brush.setColor(Qt::blue);
+    brush.setColor(Qt::yellow);
     brush.setStyle(Qt::SolidPattern);
     setBrush(brush);
 
@@ -59,7 +62,9 @@ void Player::keyPressEvent(QKeyEvent *keyPress){
 /// This should be called periodically as it only moves by one step.
 void Player::move(){
     // if front is blocked, don't move at all, return
-
+    if (frontBlocked()){
+            return;
+        }
 
     // otherwise, move based on the direction
     switch (movementDirection_){
@@ -103,3 +108,31 @@ void Player::moveRight(){
     setPos(x()+stepSize_,y());
 }
 
+
+/// Returns true if the front of the Player is blocked in the map.
+bool Player::frontBlocked(){
+    // find location of the cell in front
+    int x = 0;
+    int y = 0;
+    Node cellPos = game_->pointToNode(pos());
+    switch (movementDirection_){
+    case Direction::UP:
+        x = cellPos.x();
+        y = cellPos.y() - 1;
+        break;
+    case Direction::DOWN:
+        x = cellPos.x();
+        y = cellPos.y() + 1;
+        break;
+    case Direction::LEFT:
+        x = cellPos.x() - 1;
+        y = cellPos.y();
+        break;
+    case Direction::RIGHT:
+        x = cellPos.x() + 1;
+        y = cellPos.y();
+        break;
+    }
+
+    return game_->filled(x,y);
+}

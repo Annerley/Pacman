@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 
 #include "player.h"
+#include "map.h"
 #include <vector>
 
 
@@ -21,19 +22,21 @@ public:
     bool filled(int x, int y);
 
     // helper functions (readers)
+    Node pointToNode(const QPointF& point);
+    QPointF nodeToPoint(const Node& node);
 
 public slots:
 
 private:
     // main private attributes
-
+     PathingMap pathingMap_;       // pathing map
     QGraphicsScene* scene_;       // scene
     Player* player_;              // player
 
     int cellSize_;       // cell size
 
     // helper functions
-
+    void drawMap(const std::vector<std::vector<int>>& vec);
 
 };
 
