@@ -2,7 +2,7 @@
 #include <QTimer>
 #include <cassert>
 #include <QKeyEvent>
-#include <QDebug> // TODO remove
+#include <QDebug>
 #include <QBrush>
 #include<QPixmap>
 #include <QGraphicsEllipseItem>

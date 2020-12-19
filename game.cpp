@@ -22,6 +22,8 @@ Game::Game( int numCellsWide,  int numCellsLong,  int cellSize, QWidget *parent)
     player_->setFocus();
 
     createEnemy(1,1);
+    createEnemy(1,2);
+    createEnemy(1,10);
 
 
     std::vector<std::vector<int>> vec {

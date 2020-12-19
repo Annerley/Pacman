@@ -161,7 +161,7 @@ std::vector<Node> PathGrid::shortestPath(const Node &from, const Node &to) const
 }
 
 std::vector<Node> PathGrid::column( int i) const{
-    return nodes_[i]; // vector of nodes of the ith column
+    return nodes_[i];
 }
 
 

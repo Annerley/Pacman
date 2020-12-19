@@ -35,7 +35,7 @@ private:
     std::vector<Enemy*> enemies_;
     int cellSize_;
 
-    // helper functions
+
     void drawMap(const std::vector<std::vector<int>>& vec);
 
 };

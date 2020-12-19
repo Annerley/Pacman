@@ -19,8 +19,8 @@ public:
     std::unordered_set<Edge> edges() const;
     std::vector<Edge> outgoingEdges(const Node& from) const;
     std::vector<Edge> incomingEdges(const Node& to) const;
-    std::vector<Node> outgoingNodes(const Node& from) const; // all ADJACENT nodes this node can go to
-    std::vector<Node> incomingNodes(const Node& to) const; // all ADJACENT nodes that can come to this node
+    std::vector<Node> outgoingNodes(const Node& from) const;
+    std::vector<Node> incomingNodes(const Node& to) const;
     bool contains(const Node& node) const;
     bool contains(const Edge& edge) const;
     std::vector<Node> shortestPath(const Node& from, const Node& to) const;
