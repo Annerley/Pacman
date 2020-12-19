@@ -3,34 +3,30 @@
 
 #include "node.h"
 
-/// Represents an edge between two Nodes.
 
-/// An Edge is defined by the value of its starting ("from") and ending ("to") Nodes. Therefore
-/// two Edges are equivalent if they both start and end at the same (i.e. equivalent) Nodes.
-///
 
 class Edge{
 public:
-    // construtors
+
     Edge();
     Edge(const Node& from, const Node& to,  int weight);
 
-    // readers ("getters")
+
     Node from() const;
     Node to() const;
     int weight() const;
 
 private:
-    // main private attributes
+
     int weight_;
     Node from_;
     Node to_;
 };
 
-// comparison operator
+
 bool operator==(const Edge& lhs, const Edge& rhs);
 
-// Make Edge hashable
+
 namespace std {
 template <> struct hash<Edge>
 {

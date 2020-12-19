@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     edge.cpp \
+    enemy.cpp \
     graph.cpp \
     grid.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     edge.h \
+    enemy.h \
     game.h \
     graph.h \
     grid.h \

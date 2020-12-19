@@ -8,16 +8,13 @@
 
 class Tree;
 
-/// Represents a graph.
-
-/// A Graph is a set of Nodes and Edges.
 class Graph{
 public:
-    // constructors
+
     Graph();
     Graph(const std::unordered_set<Node>& nodes, const std::unordered_set<Edge>& edges);
 
-    // readers (getters)
+
     std::unordered_set<Node> nodes() const;
     std::unordered_set<Edge> edges() const;
     std::vector<Edge> outgoingEdges(const Node& from) const;
@@ -29,16 +26,16 @@ public:
     std::vector<Node> shortestPath(const Node& from, const Node& to) const;
     Tree spt(const Node& source) const;
 
-    // modifiers (setters)
+
     void addNode(const Node& node);
     void addEdge(const Node& from, const Node& to,  int weight);
 
 private:
-    // main private attributes
+
     std::unordered_set<Node> nodes_;
     std::unordered_set<Edge> edges_;
 
-    // helper attributes
+
     std::unordered_set<Node> pickedNodes_;
     std::unordered_set<Node> unpickedNodes_;
     std::unordered_set<Edge> pickedEdges_;
@@ -46,7 +43,7 @@ private:
     std::unordered_map<Node, int> nodeWeight_;
     std::unordered_map<Node,Edge> updatedEdge_;
 
-    // helper functions
+
     void pick(const Node& node);
     void pick(const Edge& edge);
     bool picked(const Node& node) const;
