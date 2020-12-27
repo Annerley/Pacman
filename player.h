@@ -24,6 +24,8 @@ public:
 
 public slots:
     void move();
+signals:
+    void signalCheckGameOver();  // Сигнал на вызов состояния Game Over
 
 private:
 

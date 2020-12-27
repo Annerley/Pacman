@@ -40,6 +40,9 @@ void Enemy::move(){
     if (targetReached()){
         setNextTarget();
     }
+
+
+
 }
 
 

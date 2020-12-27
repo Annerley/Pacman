@@ -9,6 +9,8 @@
 #include "enemy.h"
 #include <vector>
 
+#define GAME_STOPED 0
+#define GAME_STARTED 1
 
 class Game: public QGraphicsView {
     Q_OBJECT
@@ -24,15 +26,17 @@ public:
 
     Node pointToNode(const QPointF& point);
     QPointF nodeToPoint(const Node& node);
+    std::vector<Enemy*> enemies_;
 
 public slots:
     void setEnemyPathsToPlayer();
+     void slotGameOver();                        // Слот инициализации Game Over
 private:
 
      PathingMap pathingMap_;
     QGraphicsScene* scene_;
     Player* player_;
-    std::vector<Enemy*> enemies_;
+     int             gameState;
     int cellSize_;
 
 

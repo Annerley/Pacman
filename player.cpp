@@ -71,6 +71,19 @@ void Player::move(){
     default:
         assert(false);
     }
+
+    QList<QGraphicsItem *> foundItems = scene()->items(QPolygonF()
+                                                               << mapToScene(0, 0)
+                                                               << mapToScene(-2, -2)
+                                                               << mapToScene(2, -2));
+
+    foreach (QGraphicsItem *item, foundItems) {
+            if (item == this)
+                continue;
+            if(item == game_->enemies_[0]){
+                emit signalCheckGameOver();
+            }
+        }
 }
 
 void Player::moveUp(){

@@ -4,6 +4,7 @@
 #include <QTimer>
 #include<QGraphicsScene>
 #include<QGraphicsRectItem>
+#include <QMessageBox>
 
 Game::Game( int numCellsWide,  int numCellsLong,  int cellSize, QWidget *parent):
     QGraphicsView(parent),
@@ -45,6 +46,8 @@ Game::Game( int numCellsWide,  int numCellsLong,  int cellSize, QWidget *parent)
      QTimer* followTimer = new QTimer(this);
         connect(followTimer,SIGNAL(timeout()),this,SLOT(setEnemyPathsToPlayer()));
         followTimer->start(1000);
+
+      connect(player_, &Player::signalCheckGameOver, this, &Game::slotGameOver);
 
 
 }
@@ -112,3 +115,15 @@ QPointF Game::nodeToPoint(const Node &node){
     return QPointF(node.x()*cellSize_,node.y()*cellSize_);
 }
 
+void Game::slotGameOver()
+{
+    /* Если игра окончена
+     * Отключаем все таймеры
+     * */
+
+    QMessageBox::warning(this,
+                         "Game Over",
+                         "I express my regrets, but you lost");
+
+
+}

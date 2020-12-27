@@ -57,7 +57,7 @@ std::vector<Node> Tree::dfs(const Node &node, const Node &target, std::vector<No
 }
 
 void Tree::visit(const Node &node){
-    assert(graph_.contains(node));
+    //assert(graph_.contains(node));
 
     visitedNodes_.insert(node);
 }

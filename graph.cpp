@@ -42,7 +42,7 @@ std::unordered_set<Edge> Graph::edges() const{
 
 
 std::vector<Edge> Graph::outgoingEdges(const Node &from) const{
-    assert(contains(from));
+    //assert(contains(from));
 
     std::vector<Edge> edges;
     for(auto edge : edges_){
@@ -69,7 +69,7 @@ std::vector<Edge> Graph::incomingEdges(const Node &to) const{
 
 std::vector<Node> Graph::outgoingNodes(const Node &from) const{
 
-    assert(contains(from));
+    //assert(contains(from));
 
 
     std::vector<Edge> outgoingE = outgoingEdges(from);
