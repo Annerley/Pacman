@@ -18,7 +18,7 @@ public:
 
 
     enum class Direction {UP, DOWN, LEFT, RIGHT, NONE};
-
+    void pause();
 
     void keyPressEvent(QKeyEvent* keyPress);
 
@@ -28,7 +28,7 @@ signals:
     void signalCheckGameOver();  // Сигнал на вызов состояния Game Over
 
 private:
-
+    QTimer* moveTimer;
     Direction movementDirection_;
     int stepSize_;
     Game* game_;

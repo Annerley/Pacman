@@ -13,7 +13,7 @@ Enemy::Enemy( int stepSize, QGraphicsItem *parent):
     points_()
 {
 
-    QTimer* moveTimer = new QTimer(this);
+     moveTimer = new QTimer(this);
     connect(moveTimer,SIGNAL(timeout()),this,SLOT(move()));
     moveTimer->start(500);
 
@@ -84,4 +84,15 @@ void Enemy::moveTowardsTarget(){
     QLineF line(pos(),target);
     line.setLength(stepSize_);
     moveBy(line.dx(),line.dy());
+}
+
+void Enemy::pause(){
+
+    if(moveTimer->isActive())
+    {
+        moveTimer->stop();
+    }
+
+
+
 }

@@ -27,15 +27,16 @@ public:
     Node pointToNode(const QPointF& point);
     QPointF nodeToPoint(const Node& node);
     std::vector<Enemy*> enemies_;
+    Player* player_;
 
 public slots:
     void setEnemyPathsToPlayer();
-     void slotGameOver();                        // Слот инициализации Game Over
+     void slotGameOver();
 private:
 
      PathingMap pathingMap_;
     QGraphicsScene* scene_;
-    Player* player_;
+
      int             gameState;
     int cellSize_;
 

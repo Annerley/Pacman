@@ -117,13 +117,15 @@ QPointF Game::nodeToPoint(const Node &node){
 
 void Game::slotGameOver()
 {
-    /* Если игра окончена
-     * Отключаем все таймеры
-     * */
 
-    QMessageBox::warning(this,
-                         "Game Over",
-                         "I express my regrets, but you lost");
+   enemies_[0]->pause();
+   enemies_[1]->pause();
+   enemies_[2]->pause();
+   player_->pause();
+
+   QMessageBox::warning(this,
+                        "Game Over",
+                        "I express my regrets, but you lost");
 
 
 }

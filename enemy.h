@@ -10,10 +10,10 @@ class Enemy:public QObject, public QGraphicsRectItem{
 public:
 
     Enemy( int stepSize, QGraphicsItem* parent=nullptr);
-
+    QTimer* moveTimer;
 
     void setPoints(const std::vector<QPointF>& points);
-
+    void pause();
 public slots:
 
     void move();

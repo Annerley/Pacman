@@ -15,7 +15,7 @@ Player::Player(Game *game, int stepSize, QGraphicsItem *parent):
     game_(game)
 {
 
-    QTimer* moveTimer = new QTimer(this);
+     moveTimer = new QTimer(this);
     connect(moveTimer,SIGNAL(timeout()),this,SLOT(move()));
     moveTimer->start(300);
 
@@ -74,13 +74,19 @@ void Player::move(){
 
     QList<QGraphicsItem *> foundItems = scene()->items(QPolygonF()
                                                                << mapToScene(0, 0)
-                                                               << mapToScene(-2, -2)
-                                                               << mapToScene(2, -2));
+                                                               << mapToScene(-0.01, -0.01));
+
 
     foreach (QGraphicsItem *item, foundItems) {
             if (item == this)
                 continue;
             if(item == game_->enemies_[0]){
+                emit signalCheckGameOver();
+            }
+            if(item == game_->enemies_[1]){
+                emit signalCheckGameOver();
+            }
+            if(item == game_->enemies_[2]){
                 emit signalCheckGameOver();
             }
         }
@@ -126,4 +132,11 @@ bool Player::frontBlocked(){
     }
 
     return game_->filled(x,y);
+}
+
+void Player::pause(){
+    if(moveTimer->isActive())
+    {
+        moveTimer->stop();
+    }
 }
